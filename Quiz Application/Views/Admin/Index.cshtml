@@ -1,7 +1,34 @@
-﻿
+﻿@model Quiz_Application.ViewModel.CategoryViewModel
+
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
+
+
+@using (Html.BeginForm("Index", "Admin", FormMethod.Post))
+{
+    <div class="container">
+        <div class="form-group">
+            @Html.LabelFor(m => m.CategoryId)
+            @Html.DropDownListFor(m => m.CategoryId, Model.ListofCategory, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.QuestionName)
+            @Html.TextAreaFor(m => m.QuestionName, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.OptionName)
+            @Html.TextAreaFor(m => m.OptionName, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+          <input id="btnAddOption" type="button" class="btn btn-default" name="Option" value="Add Option" />
+          
+        </div>
+    </div>
+}
+<table id="tblOption" class="table table-condensed" style="width:100%">
+
+</table>
