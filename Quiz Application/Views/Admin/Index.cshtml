@@ -37,6 +37,51 @@
             alert("Select Answer");
             return false;
         }
+
+        var ListOfOptions = [];
+        var answerTextData = "";
+        var QuestionOption = {};
+        var OptionText = "";
+
+        $.each($("#tblOption tr"),
+            function () {
+                answerText = $(this).find("td:eq(0) input[type=radio]:checked").val();
+                OptionText = $(this).find("td:eq(0) input[type=radio]").val();
+                if (answerText !== undefined) {
+                    answerTextData = answerText;
+                }
+                ListOfOptions.push(OptionText);
+            });
+        QuestionOption.ListOfOptions = ListOfOptions;
+        QuestionOption.AnswerText = answerTextData;
+        QuestionOption.QuestionName = $("#txtQuestionName").val();
+        QuestionOption.CategoryId=$("#ddCategoryId").val();
+
+        $.ajax({
+            async: true,
+            type: 'POST',
+            dataType: 'JSON',
+            data: JSON.stringify(QuestionOption),
+            url: '/Admin/Index',
+            contentType:'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.success === true) {
+                    alert(data.message);
+                     $("#txtQuestionName").focus();
+                     $("#txtQuestionName").val('');
+                    $("#txtOptionName").val('');
+                    $("#tblOption tr").remove();
+                    $("#ddCategoryId").val(1);
+
+                } else {
+                    alert(data.message)
+                }
+            },
+            error: function () {
+                alert("there is problem!!")
+            }
+        });
+
     }
     
 
@@ -102,7 +147,7 @@
     <div class="container">
         <div class="form-group">
             @Html.LabelFor(m => m.CategoryId)
-            @Html.DropDownListFor(m => m.CategoryId, Model.ListofCategory, new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.CategoryId, Model.ListofCategory, new { @class = "form-control", @id="ddCategoryId" })
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.QuestionName)
