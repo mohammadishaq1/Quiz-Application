@@ -11,8 +11,34 @@
     $(document).ready(function () {
         $("#btnAddOption").click(function () {
             AddOptionIntoList();
-        })
+        });
+
+        $("#btnSave").click(function () {
+            SaveQuestionAndOption();
+        });
     });
+
+    function SaveQuestionAndOption() {
+         if ($("#tblOption tr").length !== 4) {
+            alert("Option should not be more than 4");
+            return false;
+        }
+        var answerText = "";
+        var answerValid = undefined;
+        $.each($("#tblOption tr"),
+            function () {
+                answerText = $(this).find("td:eq(0) input[type=radio]:checked").val();
+                if (answerText !== undefined) {
+                    answerValid = answerText;
+                }
+            });
+
+        if (answerValid === undefined) {
+            alert("Select Answer");
+            return false;
+        }
+    }
+    
 
     function AddOptionIntoList() {
           if ($("#txtQuestionName").val() === "") {
@@ -94,3 +120,9 @@
 }
 <table id="tblOption" class="table table-condensed" style="width:100%">
 </table>
+
+<div class="container">
+    <div class="form-group">
+        <input type="button" id="btnSave" value="Save" name="Save" class="btn btn-primary" />
+    </div>
+</div>
