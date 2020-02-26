@@ -17,5 +17,6 @@ namespace Quiz_Application.Models
         public int UserId { get; set; }
         public string UserName { get; set; }
         public System.DateTime LoginTime { get; set; }
+        public int CategoryId { get; set; }
     }
 }

@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "QuestionIndex";
+}
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<h2>QuestionIndex</h2>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        LoadQuestion();
+
+        $("#btnNext").click(function () {
+
+        });
+    });
+
+
+        function LoadQuestion() {
+        $.ajax({
+            async: true,
+            type: 'GET',
+            dataType: 'HTML',
+            contentType: 'application/json; charset=utf-8',
+            url: '/Quiz/UserQuestionAnswer',
+            success: function (data) {
+                $("#divQuestionOption").html(data);
+            },
+            error: function (data) {
+                alert(data)
+            }
+        });
+    }
+
+
+</script>
+
+<div id="divQuestionOption">
+
+</div>

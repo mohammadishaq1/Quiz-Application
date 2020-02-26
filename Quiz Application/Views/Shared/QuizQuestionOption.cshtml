@@ -1,0 +1,41 @@
+﻿
+@model Quiz_Application.ViewModel.QuizQuestionAnswerViewModel
+
+<style type="text/css">
+    fieldset {
+        border: 3px solid #1f497d;
+        background: #ddd;
+        border-radius: 5px;
+        padding: 15px;
+    }
+
+        fieldset legend {
+            background: #1f497d;
+            color: #fff;
+            padding: 5px 10px 10px 20px;
+            font-size: 15px;
+            border-radius: 5px;
+            box-shadow: 0 0 0 5px #ddd;
+            margin: 0 10px 0 1px;
+        }
+</style>
+@Html.HiddenFor(m=>m.QuestionId)
+
+<fieldset>
+    <legend>@Model.QuestionName</legend>
+    <table style="width:100%" class="table table-condensed">
+        @foreach(var item in Model.ListOfQuizOption)
+        {
+            <tr>
+                <td>
+                   @Html.RadioButtonFor(m=>m.OptionId, item.OptionName) @item.OptionName
+                </td>
+            </tr>
+        }
+        <tr>
+            <td>
+                <input type="button" name="Next" value="Next" class="btn btn-success" id="btnNext"/>
+            </td>
+        </tr>
+    </table>
+</fieldset>

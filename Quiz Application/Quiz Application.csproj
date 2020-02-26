@@ -136,7 +136,6 @@
     <Content Include="Web.config" />
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Quiz\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -185,8 +184,11 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\AdminViewModel.cs" />
+    <Compile Include="ViewModel\CandidateAnswer.cs" />
     <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\QuestionOptionViewModel.cs" />
+    <Compile Include="ViewModel\QuizCategoryViewModel.cs" />
+    <Compile Include="ViewModel\QuizQuestionAnswerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -205,6 +207,9 @@
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Views\Shared\_employeeLogin.cshtml" />
+    <Content Include="Views\Quiz\Index.cshtml" />
+    <Content Include="Views\Quiz\QuestionIndex.cshtml" />
+    <Content Include="Views\Shared\QuizQuestionOption.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
